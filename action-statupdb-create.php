@@ -15,10 +15,10 @@ if(isset($_POST['save'])) {
     $result = $db->exec($sql);
 
     if($result) {
-        header("Location: statupdb.php?msg=success");
+        header("Location: statupdb.php?type=success&msg=Record Created Succesfully");
         // echo "success";
     } else {
-        header("Location: statupdb.php?msg=error");
+        header("Location: statupdb.php?type=danger&msg=Record Not Created Try Again");
         // echo "error";
     }
     $db->close();

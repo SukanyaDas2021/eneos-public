@@ -13,7 +13,17 @@
     <div class="app-wrapper">
         <?php 
             $menu = "statupdb.php";
-            include 'inc/sidebar.php' 
+            include 'inc/sidebar.php';
+            include 'DbConfig.php';
+
+            $id = $_GET['id'];
+
+            $sql = "SELECT * FROM startupdb WHERE id = $id";
+            $result = $db->query($sql);
+            $data = $result->fetchArray(MYSQLI_ASSOC);
+
+            //print_r($data);
+            // exit;
         ?>
         <div class="app-content">
             <div class="app-header">
@@ -21,7 +31,7 @@
                     <h1>Startup DB</h1>
                 </div>
                 <div class="d-flex gap-2 justify-content-end">
-                    <a href="statupdb-edit.php" class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i> Edit</a>
+                    <a href="statupdb-edit.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-pencil"></i> Edit</a>
                     <a href="statupdb.php" class="btn btn-primary"><i class="fa-solid fa-chevron-left"></i> Back</a>
                 </div>
             </div>
@@ -32,114 +42,125 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label">Basic Info</label>
-                                <p class="details-text">SharpEnd (iott)</p>
+                                <label class="form-label">Company Name</label>
+                                <p class="details-text"><?php echo $data['name']; ?></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Industries</label>
+                                <p class="details-text"><?php echo $data['industry']; ?></p>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Location</label>
-                                        <p class="details-text">W. Europe</p>
+                                        <label class="form-label">URL</label>
+                                        <p class="details-text"><?php echo $data['url']; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Founded Year</label>
-                                        <p class="details-text">2017</p>
+                                        <p class="details-text"><?php echo $data['founded_year']; ?></p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">URL</label>
-                                <p class="details-text">https://bleenco.com/</p>
+                                <label class="form-label">Address</label>
+                                <p class="details-text"><?php echo $data['address']; ?></p>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Competitors</label>
+                                <p class="details-text"><?php echo $data['competitors']; ?></p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Discription(full)</label>
-                                <p class="details-text">Analyzing human behavior and actions with simple cameras in order to avoid accidents and improve human well-being</p>
+                                <p class="details-text"><?php echo $data['full_description']; ?></p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Discription(Short)</label>
-                                <p class="details-text">Analyzing human behavior and actions with simple cameras in order to avoid accidents and improve human well-being</p>
+                                <p class="details-text"><?php echo $data['short_description']; ?></p>
                             </div>
+
+                        </div>
+                        <div class="col-md-6">
 
                             <div class="mb-3">
                                 <label class="form-label">Latest Round</label>
-                                <p class="details-text"></p>
+                                <p class="details-text"><?php echo $data['latest_round_data']; ?></p>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Total Funding</label>
-                                        <p class="details-text">30</p>
+                                        <p class="details-text"><?php echo $data['total_funding']; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Source</label>
-                                        <p class="details-text">Source - A</p>
+                                        <p class="details-text"><?php echo $data['source']; ?></p>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="col-md-6">
                             
-                            <div class="mb-3">
-                                <label class="form-label">Industries</label>
-                                <p class="details-text">Industrial IT</p>
-                            </div>
+                            
 
                             <div class="mb-3">
                                 <label class="form-label">In Charge</label>
-                                <p class="details-text">Tsutsuki</p>
+                                <p class="details-text"><?php echo $data['in_charge']; ?></p>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Added Date</label>
-                                        <p class="details-text">22-07-2021</p>
+                                        <p class="details-text"><?php echo $data['created_at']; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Modified Date</label>
-                                        <p class="details-text">22-07-2021</p>
+                                        <p class="details-text"><?php echo $data['updated_at']; ?></p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Member's Comments</label>
-                                <p class="details-text">N/A</p>
+                                <p class="details-text"><?php echo $data['comments']; ?></p>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Current status</label>
-                                        <p class="details-text">4</p>
+                                        <p class="details-text"><?php echo $data['current_status']; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Final progress</label>
-                                        <p class="details-text">5</p>
+                                        <p class="details-text"><?php echo $data['final_progress']; ?></p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Tag</label>
-                                <p class="details-text">Digital, Robotics/Sensors,Materials/Chemicals/Biotechnology, PlantTechnology/Inspection,  EnergyManagement/Batteries, Mobility/Logistics, RenewableEnergy/Hydrogen</p>
+                                <p class="details-text"><?php echo $data['tag']; ?></p>
                             </div>
 
                         </div>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="statupdb.php" class="btn btn-outline-primary"><i class="fa-solid fa-chevron-left"></i> Back</a>
                     </div>
 
                 </div>
