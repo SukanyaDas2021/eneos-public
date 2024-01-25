@@ -7,23 +7,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <div class="app-wrapper">
         <?php 
             $menu = "statupdb.php";
-            include 'inc/sidebar.php' 
+            include 'inc/sidebar.php';
+
+            include 'DbConfig.php';
+            $table_sql = "SELECT COUNT(*) as count FROM `startupdb`";
+            $table_result = $db->query($table_sql);
+            $table_data = $table_result->fetchArray();
         ?>
         <div class="app-content">
             <div class="app-header">
                 <div class="title-block">
                     <h1>Startup DB</h1>
-                    <h5>10 entries found</h5>
+                    <h5><?php echo $table_data['count']; ?> entries found</h5>
                 </div>
                 <div class="d-flex gap-2 justify-content-end">
                     <a href="statupdb-import.php" class="btn btn-outline-primary"><i class="fa-regular fa-file"></i> Import </a>
-                    <a href="statupdb-edit.php" class="btn btn-primary"><i class="fa-regular fa-plus"></i> Create new entry</a>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-entry"><i class="fa-regular fa-plus"></i> Create new entry</a>
                 </div>
             </div>
 
@@ -68,7 +75,70 @@
 
                 <div class="app-card">
                     <div class="table-responsive">
-                        <table class="table">
+
+                        <?php 
+
+                            if ($table_data['count'] > 0) {
+                                
+                            ?>
+                            <table class="table" id="startupdb">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Basic Info</th>
+                                        <th scope="col">URL</th>
+                                        <th scope="col">Description (Short)</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Founded Year</th>
+                                        <th scope="col">Latest Round</th>
+                                        <th scope="col">Total Funding</th>
+                                        <th scope="col">Industries</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php 
+
+                            $sql = "SELECT * FROM `startupdb` ORDER BY `id` DESC";
+                            $result = $db->query($sql);
+                            $sno=0;
+                            while($row = $result->fetchArray(SQLITE3_ASSOC)) { 
+                                
+                                $sno++;
+                            ?>
+
+                                <tr>
+                                    <th scope="row"><?php echo $sno; ?></th>
+                                    <td><a href="statupdb-view.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
+                                    <td><?php echo $row['url']; ?></td>
+                                    <td><?php echo $row['short_description']; ?></td>
+                                    <td><?php echo $row['address']; ?></td>
+                                    <td><?php echo $row['founded_year']; ?></td>
+                                    <td><?php echo $row['latest_round_data']; ?></td>
+                                    <td><?php echo $row['total_funding']; ?></td>
+                                    <td><?php echo $row['industry']; ?></td>
+                                    <td>
+                                        <a href="statupdb-view.php?id=<?php echo $row['id']; ?>" class="grid-list" title="view"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="statupdb-delete.php?id=<?php echo $row['id']; ?>" class="grid-list" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                                    </td>
+                                </tr>
+
+                                    
+                            <?php } ?>
+
+                                </tbody>
+                            </table>
+
+                            <?php
+
+                            } else {
+                                
+                            }
+
+                            $db->close();
+                        ?>
+
+                        <!-- <table class="table" id="startupdb">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -84,6 +154,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
+
                                 <?php for($i=1; $i<6; $i++) { ?>
                                 <tr>
                                     <th scope="row"><?php echo $i; ?></th>
@@ -102,11 +174,11 @@
                                 </tr>
                                 <?php } ?>
                             </tbody>
-                        </table>
+                        </table> -->
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between w-100">
+                <!-- <div class="d-flex justify-content-between w-100">
 
                     <div>
                         <select class="form-control">
@@ -132,11 +204,62 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div> -->
 
             </div>
 
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="create-entry" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="statupdb-create.php" method="POST">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Startup DB</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="mb-3">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" class="form-control" name="company_name" value="Greentown Labs">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">URL</label>
+                            <input type="text" class="form-control" name="url" value="https://www.greentownlabs.com">
+                        </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Get Started</button>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <!-- Include DataTables Buttons CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            let table = new DataTable('#startupdb', {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        })
+    </script>
 </body>
 </html>
