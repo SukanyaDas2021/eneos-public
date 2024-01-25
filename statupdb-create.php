@@ -173,9 +173,7 @@ if(isset($_POST['company_name'])) {
 
                                 <div class="mb-3">
                                     <label class="form-label">Tag</label>
-                                    <textarea class="form-control" name="tag">
-                                        <?php echo (is_array($company_data['Tags'])) ? implode(',', $company_data['Tags']) : $company_data['Tags']; ?>
-                                    </textarea>
+                                    <textarea class="form-control" name="tag"><?php echo (is_array($company_data['Tags'])) ? implode(',', $company_data['Tags']) : $company_data['Tags']; ?></textarea>
                                 </div>
 
                             </div>

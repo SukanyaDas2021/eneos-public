@@ -38,6 +38,8 @@
 
             <div class="pt-3 w-100 d-flex flex-column gap-3">
 
+                <?php include 'inc/alert.php'; ?>
+
                 <div class="app-card">
                     <div class="row">
                         <div class="col-md-6">

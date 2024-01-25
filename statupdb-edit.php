@@ -28,60 +28,60 @@
                     <h1>Startup DB</h1>
                 </div>
                 <div class="d-flex gap-2 justify-content-end">
-                    <a href="statupdb.php" class="btn btn-primary"><i class="fa-solid fa-chevron-left"></i> Back</a>
+                    <a href="statupdb-view.php?id=<?php echo $_GET['id']; ?>" class="btn btn-primary"><i class="fa-solid fa-chevron-left"></i> Back</a>
                 </div>
             </div>
 
             <div class="pt-3 w-100 d-flex flex-column gap-3">
             
             <form action="action-statupdb-update.php" method="post">
-
+                <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
                 <div class="app-card">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Company Name</label>
-                                <input type="text" class="form-control" name="name" value="<?php echo $company_data['name']; ?>">
+                                <input type="text" class="form-control" name="name" value="<?php echo $data['name']; ?>">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Industries</label>
-                                <input type="text" class="form-control" name="industry" value="<?php echo $company_data['Category/Industry']; ?>">
+                                <input type="text" class="form-control" name="industry" value="<?php echo $data['industry']; ?>">
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">URL</label>
-                                        <input type="text" class="form-control" name="url" value="<?php echo $company_data['url']; ?>">
+                                        <input type="text" class="form-control" name="url" value="<?php echo $data['url']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Founded Year</label>
-                                        <input type="text" class="form-control" name="founded_year" value="<?php echo $company_data['Year Founded']; ?>">
+                                        <input type="text" class="form-control" name="founded_year" value="<?php echo $data['founded_year']; ?>">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Address</label>
-                                <textarea class="form-control" name="address"><?php echo $company_data['Company Address']; ?></textarea>
+                                <textarea class="form-control" name="address"><?php echo $data['address']; ?></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Competitors</label>
-                                <textarea class="form-control" name="competitors"><?php echo (is_array($company_data['Competitors'])) ? implode(',', $company_data['Competitors']) : $company_data['Competitors']; ?></textarea>
+                                <textarea class="form-control" name="competitors"><?php echo $data['competitors']; ?></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Discription(full)</label>
-                                <textarea class="form-control" name="full_description"><?php echo $company_data['Full Description']; ?></textarea>
+                                <textarea class="form-control" name="full_description"><?php echo $data['full_description']; ?></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Discription(Short)</label>
-                                <textarea class="form-control" name="short_description"><?php echo $company_data['Short Description']; ?></textarea>
+                                <textarea class="form-control" name="short_description"><?php echo $data['short_description']; ?></textarea>
                             </div>
 
                         </div>
@@ -89,20 +89,20 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Latest Round</label>
-                                <input type="text" class="form-control" name="latest_round_data" value="<?php echo (is_array($company_data['Latest Round Data'])) ? implode(',', $company_data['Latest Round Data']) : $company_data['Latest Round Data']; ?>">
+                                <input type="text" class="form-control" name="latest_round_data" value="<?php echo $data['latest_round_data']; ?>">
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Total Funding</label>
-                                        <input type="text" class="form-control" name="total_funding" value="<?php echo $company_data['Total Funding']; ?>">
+                                        <input type="text" class="form-control" name="total_funding" value="<?php echo $data['total_funding']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Source</label>
-                                        <input type="text" class="form-control" name="source" value="">
+                                        <input type="text" class="form-control" name="source" value="<?php echo $data['source']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -111,57 +111,55 @@
 
                             <div class="mb-3">
                                 <label class="form-label">In Charge</label>
-                                <input type="text" class="form-control" name="in_charge" value="">
+                                <input type="text" class="form-control" name="in_charge" value="<?php echo $data['in_charge']; ?>">
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Added Date</label>
-                                        <input type="text" class="form-control" name="created_at" value="<?php echo date("Y-m-d"); ?>">
+                                        <input type="text" class="form-control" name="created_at" value="<?php echo $data['created_at']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Modified Date</label>
-                                        <input type="text" class="form-control" name="updated_at" value="">
+                                        <input type="text" class="form-control" name="updated_at" value="<?php echo $data['updated_at']; ?>">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Member's Comments</label>
-                                <textarea class="form-control" name="comments"></textarea>
+                                <textarea class="form-control" name="comments"><?php echo $data['comments']; ?></textarea>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Current status</label>
-                                        <input type="text" class="form-control" name="current_status" value="">
+                                        <input type="text" class="form-control" name="current_status" value="<?php echo $data['current_status']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Final progress</label>
-                                        <input type="text" class="form-control" name="final_progress" value="">
+                                        <input type="text" class="form-control" name="final_progress" value="<?php echo $data['final_progress']; ?>">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Tag</label>
-                                <textarea class="form-control" name="tag">
-                                    <?php echo (is_array($company_data['Tags'])) ? implode(',', $company_data['Tags']) : $company_data['Tags']; ?>
-                                </textarea>
+                                <textarea class="form-control" name="tag"><?php echo $data['tag']; ?></textarea>
                             </div>
 
                         </div>
                     </div>
 
                     <div class="d-flex gap-2 mt-3">
-                        <a href="statupdb.php" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i> Cancel</a>
-                        <button type="submit" name="save" class="btn btn-primary"><i class="fa-solid fa-save"></i> Save</button>
+                        <a href="statupdb-view.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-xmark"></i> Cancel</a>
+                        <button type="submit" name="update" class="btn btn-primary"><i class="fa-solid fa-save"></i> Update</button>
                     </div>
 
                 </div>
