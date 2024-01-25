@@ -20,7 +20,7 @@
 
             $sql = "SELECT * FROM startupdb WHERE id = $id";
             $result = $db->query($sql);
-            $data = $result->fetchArray(MYSQLI_ASSOC);
+            $data = $result->fetchArray(SQLITE3_ASSOC);
 
             //print_r($data);
             // exit;
