@@ -1,8 +1,7 @@
 <?php 
+ob_start();
 
 include "DbConfig.php";
-
-print_r($_POST);
 
 if(isset($_POST['save'])) {
     // echo "Hello";

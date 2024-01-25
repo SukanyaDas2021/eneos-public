@@ -1,10 +1,8 @@
 <?php 
+ob_start();
 
 include "DbConfig.php";
 
-print_r($_POST);
-
-// `name`, `industry`, `address`, `competitors`, `full_description`, `latest_round_data`, `short_description`, `tag`, `total_funding`, `founded_year`, `url`, `created_at`, `in_charge`, `source`, `final_progress`, `current_status`, `comments`, `updated_at`
 
 if(isset($_POST['update'])) {
     // echo "Hello";
@@ -17,10 +15,8 @@ if(isset($_POST['update'])) {
 
     if($result) {
         header("Location: statupdb-view.php?id=$id&type=success&msg=Record Updated Succesfully");
-        // echo "success";
     } else {
         header("Location: statupdb-view.php?id=$id&type=danger&msg=Record Not Updated Try Again");
-        // echo "error";
     }
     $db->close();
 }
