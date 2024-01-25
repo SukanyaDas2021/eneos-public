@@ -233,11 +233,11 @@
                     
                         <div class="mb-3">
                             <label class="form-label">Company Name</label>
-                            <input type="text" class="form-control" name="company_name" value="Greentown Labs">
+                            <input type="text" class="form-control" name="company_name" value="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">URL</label>
-                            <input type="text" class="form-control" name="url" value="https://www.greentownlabs.com">
+                            <input type="text" class="form-control" name="url" value="">
                         </div>
                     
                 </div>
