@@ -15,11 +15,11 @@ if(!$db) {
 
 // connect mySQL database using opps
 
-$mydb = new mysqli('localhost', 'root', '', 'eneos');
+// $mydb = new mysqli('localhost', 'root', '', 'eneos');
 
-if(!$mydb) {
-    echo $mydb->connect_error;
-}
+// if(!$mydb) {
+//     echo $mydb->connect_error;
+// }
 
 
 ?>
