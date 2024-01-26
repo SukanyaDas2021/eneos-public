@@ -6,7 +6,7 @@ ob_start();
 include "DbConfig.php";
 include 'inc/functions.php';
 
-print_r($_POST);
+// print_r($_POST);
 //print_r($_POST['choose']);
 
 $total_inseted = 0;
@@ -20,7 +20,7 @@ foreach ($_POST['choose'] as $key => $value) {
 
     $compnay_data = getCompanyData($_POST['name'][$value], $url);
 
-    print_r($compnay_data);
+    // print_r($compnay_data);
 
     $name = dataFormating($compnay_data['name']);
     $industry = dataFormating($compnay_data['Category/Industry']);
@@ -57,7 +57,13 @@ foreach ($_POST['choose'] as $key => $value) {
 
 }
 
-header("Location: statupdb.php?type=success&msg=$total_inseted Record Created Succesfully");
+$db->close();
+
+echo '<script> location.replace("statupdb.php?type=success&msg='.$total_inseted.' Record Created Succesfully"); </script>';
+
+// exit(header("Location: statupdb.php?type=success&msg=$total_inseted Record Created Succesfully"));
+
+ob_end_flush();
 
 ?>
 </pre>
