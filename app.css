@@ -139,6 +139,11 @@ body{
     border-color: var(--primary-blue);
 }
 
+.btn.disabled, .btn:disabled, fieldset:disabled .btn{
+    background: var(--primary-blue);    
+    border-color: var(--primary-blue);
+}
+
 .title-block{
     display: flex;
     flex-direction: column;
@@ -404,3 +409,34 @@ body{
 .grid-list{
     color: var(--lite-text);
 }
+
+
+.goog-te-combo{
+  width: 100%;
+  padding: 5px;
+  background: #FFF;
+  border: 1px solid #CDCDCD;
+  border-radius: 4px;
+}
+
+.goog-te-gadget{
+    color: #FFF !important;
+    font-size: 0px !important;
+}
+
+.goog-te-gadget span{
+    display: none;
+}
+
+#file-input {
+    display: none;
+}
+
+#file-label {
+    padding: 10px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+

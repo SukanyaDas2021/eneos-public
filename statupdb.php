@@ -236,7 +236,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Get Started</button>
+                    <button id="upload-button" type="submit" class="btn btn-primary">Get Started</button>
+                    <button id="uploading-button" class="btn btn-primary" type="button" disabled style="display: none;">
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span role="status">Creating Data...</span>
+                    </button>
                 </div>
                 </div>
             </div>
@@ -261,6 +265,11 @@
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
             });
+
+            $("#upload-button").click(function() {
+                $(this).hide();
+                $("#uploading-button").show();
+            })
         })
     </script>
 </body>

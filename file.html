@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Example with jQuery</title>
+    <style>
+        #drop-area {
+            width: 100%;
+            height: 150px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #file-label {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="drop-area">
+    <label for="file-input" id="file-label">Choose a file or drag it here</label>
+    <input type="file" id="file-input" accept=".txt, .pdf, .docx">
+</div>
+
+<button id="upload-button">Upload</button>
+
+<script>
+    $(document).ready(function() {
+        var dropArea = $("#drop-area");
+        var fileInput = $("#file-input")[0];
+
+        dropArea.on("dragover", function(event) {
+            event.preventDefault();
+            dropArea.addClass("highlight");
+        });
+
+        dropArea.on("dragleave", function(event) {
+            event.preventDefault();
+            dropArea.removeClass("highlight");
+        });
+
+        dropArea.on("drop", function(event) {
+            event.preventDefault();
+            dropArea.removeClass("highlight");
+
+            var files = event.originalEvent.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener("change", function() {
+            var files = this.files;
+            handleFiles(files);
+        });
+
+        $("#upload-button").on("click", function() {
+            var file = fileInput.files[0];
+
+            if (file) {
+                var formData = new FormData();
+                formData.append('file', file);
+
+                $.ajax({
+                    url: 'http://52.203.56.207:8081/upload', // Replace with your server URL
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        console.log('File uploaded successfully:', response);
+                        // Handle the success response
+                    },
+                    error: function(error) {
+                        console.error('Error uploading file:', error);
+                        // Handle the error response
+                    }
+                });
+            } else {
+                console.error('No file selected');
+            }
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                var fileName = files[0].name;
+                console.log("Selected file:", fileName);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

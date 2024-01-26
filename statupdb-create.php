@@ -27,15 +27,22 @@
 
 <?php 
 
+// turn off error reporting
+error_reporting(0);
+ob_start();
+
 include 'inc/functions.php';
 
 if(isset($_POST['company_name'])) {
     extract($_POST);
+    $url = ensureHttpScheme($url);
     $company_data = getCompanyData($company_name, $url);
+} else{
+    header("Location: statupdb.php?type=danger&msg=Please Enter Company Name & URL");
 }
 
 // echo "<pre>";
-//print_r($company_data);
+// print_r($company_data);
 // echo "</pre>";
 
 // $company_data = array(

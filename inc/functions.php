@@ -33,4 +33,19 @@ function getCompanyData($name, $siteurl) {
 
 }
 
+function dataFormating($data){
+    return (is_array($data)) ? implode(',', $data) : $data;
+}
+
+function ensureHttpScheme($url) {
+    $parsedUrl = parse_url($url);
+
+    // If the URL doesn't have a scheme, add "http://"
+    if (!isset($parsedUrl['scheme'])) {
+        $url = 'http://' . $url;
+    }
+
+    return $url;
+}
+
 ?>

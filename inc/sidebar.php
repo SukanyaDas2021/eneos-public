@@ -31,13 +31,27 @@
             </div>
         </div>
 
-        <select class="select-box" name="language">
+        <!-- <select class="select-box" name="language">
             <option value="en">English</option>
             <option value="jp">Japanesh</option>
             <option value="fr">French</option>
             <option value="de">German</option>
             <option value="ru">Russian</option>
             <option value="it">Italian</option>
-        </select>
+        </select> -->
+
+        <div id="google_translate_element"></div>
+
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'},
+                    'google_translate_element'
+                );
+            }
+        </script>
+    
+        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     </div>
 </div>
