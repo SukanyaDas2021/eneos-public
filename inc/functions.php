@@ -34,7 +34,7 @@ function getCompanyData($name, $siteurl) {
 }
 
 function dataFormating($data){
-    return (is_array($data)) ? implode(',', $data) : $data;
+    return (is_array($data)) ? implode(', ', $data) : $data;
 }
 
 function ensureHttpScheme($url) {

@@ -38,6 +38,12 @@
                     </div>
                 </div>
             <?php } ?>
+            
+            <div class="row w-100 pt-3">
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">This page contains only dummy data for demonstration purposes.</div>
+                </div>
+            </div>
 
             <h5 class="mt-5">Folder</h5>
 

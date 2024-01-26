@@ -26,6 +26,8 @@
                 </div>
             </div>
 
+            <div class="alert alert-warning" role="alert">This page contains only dummy data for demonstration purposes.</div>
+
             <div class="pt-3 w-100 d-flex flex-column gap-3">
 
                 <div class="app-card">

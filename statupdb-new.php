@@ -6,10 +6,33 @@
     <title>Startup DB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
     <link rel="stylesheet" href="app.css">
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Include DataTables CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
 </head>
 <body>
     <div class="app-wrapper">
@@ -76,7 +99,7 @@
                 <?php include 'inc/alert.php'; ?>
 
                 <div class="app-card">
-                    <div class="table-responsive">
+                    <div class="table-responsive-0">
 
                         <?php 
 
@@ -253,61 +276,16 @@
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
-    <!-- Include DataTables Buttons CSS and JS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
-
     <script>
-        $(document).ready( function () {
-
-            // $('#startupdb').DataTable({
-            //     "columnDefs": [
-            //         { "width": "550px", "targets": 0 }, // Set the width for the first column
-            //         { "width": "200px", "targets": 1 }, // Set the width for the second column
-            //         // Add more targets for additional columns if needed
-            //     ]
-            // });
-
-            let table = new DataTable('#startupdb', {
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-                // columnDefs: [
-                //     { "width": "350px", "targets": 3 },
-                // ],
-                columns: [
-                    { "title": 'Id' }, //0
-                    { "title": 'Company Name' }, //1
-                    { "title": 'Company Address' }, //2
-                    { "title": 'Company URL' }, //3
-                    { "title": 'Contact Info' }, //4
-                    { "title": 'Year Founded' }, //5
-                    { "title": 'Category/Industry' }, //6
-                    { "title": 'Tags' }, //7
-                    { "title": 'Short Description' }, //8
-                    { "title": 'Full Description' }, //9
-                    { "title": 'Latest Round Data' }, //10
-                    { "title": 'Total Funding' }, //11
-                    { "title": 'Competitors' }, //12
-                    { "title": 'Actions' }, //13
-                    
+        $(document).ready(function() {
+            $('#startupdb').DataTable({
+                "columnDefs": [
+                    { "width": "550px", "targets": 9 }, // Set the width for the eighth (last) column
                 ]
             });
-
-            // table.columns.adjust().draw();
-
-            $("#upload-button").click(function() {
-                $(this).hide();
-                $("#uploading-button").show();
-            })
-        })
+        });
     </script>
+
+    
 </body>
 </html>

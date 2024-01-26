@@ -100,7 +100,7 @@ if(isset($_POST['company_name'])) {
 
                                 <div class="mb-3">
                                     <label class="form-label">Competitors</label>
-                                    <textarea class="form-control" name="competitors"><?php echo (is_array($company_data['Competitors'])) ? implode(',', $company_data['Competitors']) : $company_data['Competitors']; ?></textarea>
+                                    <textarea class="form-control" name="competitors"><?php echo dataFormating($company_data['Competitors']); ?></textarea>
                                 </div>
 
                                 <div class="mb-3">
@@ -118,7 +118,7 @@ if(isset($_POST['company_name'])) {
 
                                 <div class="mb-3">
                                     <label class="form-label">Latest Round</label>
-                                    <input type="text" class="form-control" name="latest_round_data" value="<?php echo (is_array($company_data['Latest Round Data'])) ? implode(',', $company_data['Latest Round Data']) : $company_data['Latest Round Data']; ?>">
+                                    <input type="text" class="form-control" name="latest_round_data" value="<?php echo dataFormating($company_data['Latest Round Data']); ?>">
                                 </div>
 
                                 <div class="row">
@@ -180,7 +180,7 @@ if(isset($_POST['company_name'])) {
 
                                 <div class="mb-3">
                                     <label class="form-label">Tag</label>
-                                    <textarea class="form-control" name="tag"><?php echo (is_array($company_data['Tags'])) ? implode(',', $company_data['Tags']) : $company_data['Tags']; ?></textarea>
+                                    <textarea class="form-control" name="tag"><?php echo dataFormating($company_data['Tags']); ?></textarea>
                                 </div>
 
                             </div>
