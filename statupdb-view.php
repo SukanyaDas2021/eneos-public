@@ -79,12 +79,12 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Discription(full)</label>
+                                <label class="form-label">Description(full)</label>
                                 <p class="details-text"><?php echo $data['full_description']; ?></p>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Discription(Short)</label>
+                                <label class="form-label">Description(Short)</label>
                                 <p class="details-text"><?php echo $data['short_description']; ?></p>
                             </div>
 

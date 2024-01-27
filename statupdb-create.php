@@ -104,12 +104,12 @@ if(isset($_POST['company_name'])) {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Discription(full)</label>
+                                    <label class="form-label">Description(full)</label>
                                     <textarea class="form-control" name="full_description"><?php echo $company_data['Full Description']; ?></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Discription(Short)</label>
+                                    <label class="form-label">Description(Short)</label>
                                     <textarea class="form-control" name="short_description"><?php echo $company_data['Short Description']; ?></textarea>
                                 </div>
 

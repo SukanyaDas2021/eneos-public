@@ -184,7 +184,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Discription</label>
+                                                                <label class="form-label">Description</label>
                                                                 <textarea class="form-control" name="full_description[]">`+response[i].description+`</textarea>
                                                             </div>
                                                         </div>
