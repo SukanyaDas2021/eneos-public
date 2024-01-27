@@ -157,7 +157,7 @@
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Contact</label>
-                                                                <input type="text" class="form-control" name="in_charge[]" value="">
+                                                                <input type="text" class="form-control" name="in_charge[]" value="`+response[i].contact+`">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -171,13 +171,13 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Industry</label>
-                                                                <input type="text" class="form-control" name="industry[]" value="">
+                                                                <input type="text" class="form-control" name="industry[]" value="`+response[i].industry+`">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Location</label>
-                                                                <input type="text" class="form-control" name="address[]" value="">
+                                                                <input type="text" class="form-control" name="address[]" value="`+response[i].location+`">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,7 +185,7 @@
                                                         <div class="col-md-12">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Discription</label>
-                                                                <textarea class="form-control" name="full_description[]"></textarea>
+                                                                <textarea class="form-control" name="full_description[]">`+response[i].description+`</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
