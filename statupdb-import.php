@@ -146,12 +146,12 @@
                                             <div class="d-flex gap-3">
                                                 <input type="checkbox" value="`+i+`" name="choose[]">
                                                 <div class="flex-grow-1">
-                                                    <h3 class="mb-3">`+response[i].company_name+`</h3>
+                                                    <h3 class="mb-3">`+response[i].company+`</h3>
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Company Name</label>
-                                                                <input type="text" class="form-control" name="name[]" value="`+response[i].company_name+`">
+                                                                <input type="text" class="form-control" name="name[]" value="`+response[i].company+`">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
