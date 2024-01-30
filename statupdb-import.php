@@ -75,6 +75,8 @@
     <script>
         $(document).ready(function() {
 
+            var file;
+
             $("#import-submit").click(function() {
                 $("#import-submit").hide();
                 $("#importing-submit").show();
@@ -107,7 +109,7 @@
             });
 
             $("#upload-button").on("click", function() {
-                var file = fileInput.files[0];
+                // var file = fileInput.files[0];
 
                 $("#upload-button").hide();
                 $("#uploading-button").show();                
@@ -211,6 +213,7 @@
 
             function handleFiles(files) {
                 if (files.length > 0) {
+                    file = files[0];
                     var fileName = files[0].name;
                     console.log("Selected file:", fileName);
                     $("#selected-file").text(fileName);
