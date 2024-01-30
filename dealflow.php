@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="alert alert-warning" role="alert">This page contains only dummy data for demonstration purposes.</div>
+                <?php include 'inc/dummy.php'; ?>
 
                 <div class="app-card">
                     <div class="table-responsive">

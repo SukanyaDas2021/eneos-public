@@ -41,7 +41,7 @@
             
             <div class="row w-100 pt-3">
                 <div class="col-12">
-                    <div class="alert alert-warning" role="alert">This page contains only dummy data for demonstration purposes.</div>
+                <?php include 'inc/dummy.php'; ?>
                 </div>
             </div>
 
