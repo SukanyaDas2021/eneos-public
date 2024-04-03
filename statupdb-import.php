@@ -34,7 +34,7 @@
                         <!-- Click to select an Excel file or drag and drop in this area -->
 
                         <label for="file-input" id="file-label">Choose a file or drag it here</label>
-                        <input type="file" id="file-input" accept=".pdf">
+                        <input type="file" id="file-input" accept=".pdf, .xlsx, .xls, .csv">
                     </div>
                     <p id="selected-file" class="pt-2"></p>
                     <div class="d-flex justify-content-center">

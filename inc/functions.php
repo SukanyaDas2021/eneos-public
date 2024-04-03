@@ -48,4 +48,8 @@ function ensureHttpScheme($url) {
     return $url;
 }
 
+function removeQoute($string) {
+    return str_replace("'", "''", $string);
+}
+
 ?>
